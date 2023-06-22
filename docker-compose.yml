@@ -30,7 +30,7 @@ services:
     networks:
       - public
       - internal
-    entrypoint: mlflow server --backend-store-uri mysql+pymysql://${MYSQL_USER}:${MYSQL_PASSWORD}@db:3306/${MYSQL_DATABASE} --default-artifact-root wasbs://${AZURE_BUCKET_NAME}@${AZURE_STORAGE_ACCOUNT}.blob.core.windows.net/ --artifacts-destination wasbs://${AZURE_BUCKET_NAME}@${AZURE_STORAGE_ACCOUNT}.blob.core.windows.net/ -h 0.0.0.0
+    entrypoint: mlflow server --backend-store-uri mysql+pymysql://${MYSQL_USER}:${MYSQL_PASSWORD}@db:3306/${MYSQL_DATABASE} --artifacts-destination wasbs://${AZURE_BUCKET_NAME}@${AZURE_STORAGE_ACCOUNT}.blob.core.windows.net/ -h 0.0.0.0
     depends_on:
       wait-for-db:
         condition: service_completed_successfully
